@@ -7,5 +7,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
-  ]
+  ],
+  rules: {
+    'prefer-arrow-callback': 'warn'
+  }
 };
