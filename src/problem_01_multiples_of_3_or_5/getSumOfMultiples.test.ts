@@ -1,23 +1,16 @@
 import { getSumOfAllMultiples } from './getSumOfAllMultiples';
 
 describe('Get Sum of All Multiples', () => {
-  it('should return the sum of all multiples of 3 below 10', () => {
-    const multiples = [3];
-    const limit = 10;
-    const expectedSum = 18;
+  it.each`
+    multiples | limit | expectedSum
+    ${[3]}    | ${10} | ${18}
+    ${[3, 5]} | ${10} | ${23}
+  `(
+    'should return the sum of all multiples for "$multiples" below the limit "$limit"',
+    ({ multiples, limit, expectedSum }) => {
+      const sumOfAllMultiples = getSumOfAllMultiples(multiples, limit);
 
-    const sumOfMultiples = getSumOfAllMultiples(multiples, limit);
-
-    expect(sumOfMultiples).toEqual(expectedSum);
-  });
-
-  it('should return the sum of all multiples of 3 or 5 below 10', () => {
-    const multiples = [3, 5];
-    const limit = 10;
-    const expectedSum = 23;
-
-    const sumOfMultiples = getSumOfAllMultiples(multiples, limit);
-
-    expect(sumOfMultiples).toEqual(expectedSum);
-  });
+      expect(sumOfAllMultiples).toEqual(expectedSum);
+    }
+  );
 });
