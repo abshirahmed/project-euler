@@ -1,20 +1,20 @@
 export default class FibonacciSequence {
-  private readonly sequence: bigint[];
+  private readonly sequence: number[];
 
-  constructor(private terms = 0) {
-    this.sequence = this.generateFibonacciSequence(terms);
+  constructor(private sequenceLimit = 90) {
+    this.sequence = this.generateFibonacciSequence(sequenceLimit);
   }
 
-  getSequence = (): bigint[] => this.sequence;
+  getSequence = (): number[] => this.sequence;
 
-  generateFibonacciSequence = (terms: number): bigint[] => {
-    let x = 0n,
-      y = 1n,
+  generateFibonacciSequence = (sequenceLimit: number): number[] => {
+    let x = 0,
+      y = 1,
       temp = y;
 
     const fibonacciSequence = [x];
 
-    for (let i = terms; i >= 0; i--) {
+    while (y <= sequenceLimit) {
       fibonacciSequence.push(y);
       temp = y; // temporarily stores the last value in the previous sequence
       y = y + x; // the last two values are added to create the latest value in the sequence
@@ -24,13 +24,13 @@ export default class FibonacciSequence {
     return fibonacciSequence;
   };
 
-  getSumOfFibonacciSequence = (fibonacciSequence = this.sequence): bigint => fibonacciSequence.reduce((x, y) => x + y);
+  getSumOfFibonacciSequence = (fibonacciSequence = this.sequence): number => fibonacciSequence.reduce((x, y) => x + y);
 
-  getSumOfEvenFibonacciSequence = (fibonacciSequence = this.sequence): bigint => {
+  getSumOfEvenFibonacciSequence = (fibonacciSequence = this.sequence): number => {
     const evenFibonacciSequence = this.filterEvenFibonacciSequence(fibonacciSequence);
     return this.getSumOfFibonacciSequence(evenFibonacciSequence);
   };
 
-  filterEvenFibonacciSequence = (fibonacciSequence = this.sequence): bigint[] =>
-    fibonacciSequence.filter((x) => x !== 0n && x % 2n === 0n);
+  filterEvenFibonacciSequence = (fibonacciSequence = this.sequence): number[] =>
+    fibonacciSequence.filter((x) => x !== 0 && x % 2 === 0);
 }

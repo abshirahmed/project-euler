@@ -2,42 +2,39 @@ import FibonacciSequence from '../../src/problem_02_even_fibonacci_numbers/fibon
 
 describe('Fibonacci Sequence', () => {
   describe('Get Fibonacci sequence', () => {
-    it('should return a valid Fibonacci sequence when terms is set to 10', () => {
-      const terms = 10;
-      const sequence = new FibonacciSequence(terms).getSequence();
-      const expectedFibonacciSeries = [0n, 1n, 1n, 2n, 3n, 5n, 8n, 13n, 21n, 34n, 55n, 89n];
+    it('should return a valid Fibonacci sequence for values up to 90', () => {
+      const expectedFibonacciSeries = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+
+      const sequence = new FibonacciSequence().getSequence();
 
       expect(sequence).toEqual(expectedFibonacciSeries);
     });
   });
 
   describe('Get sum of Fibonacci sequence', () => {
-    it('should return a Fibonacci sequence sum of "232" when terms is to 10', () => {
-      const term = 10;
-      const fibonacciSequence = new FibonacciSequence(term);
-      const expectedSum = '232';
+    it('should return the total sum of a Fibonacci sequence for values up to 90', () => {
+      const fibonacciSequence = new FibonacciSequence();
+      const expectedSum = 232;
 
-      expect(fibonacciSequence.getSumOfFibonacciSequence().toString()).toEqual(expectedSum);
+      expect(fibonacciSequence.getSumOfFibonacciSequence()).toEqual(expectedSum);
     });
   });
 
   describe('Filter even Fibonacci sequence', () => {
-    it('should return only even values from a Fibonacci sequence when terms is set to 10', () => {
-      const term = 10;
-      const fibonacciSequence = new FibonacciSequence(term);
-      const expectedFibonacciSeries = [2n, 8n, 34n];
+    it('should only return the even values of a Fibonacci sequence for values up to 90', () => {
+      const fibonacciSequence = new FibonacciSequence();
+      const expectedFibonacciSeries = [2, 8, 34];
 
       expect(fibonacciSequence.filterEvenFibonacciSequence()).toEqual(expectedFibonacciSeries);
     });
   });
 
   describe('Get sum of even Fibonacci sequence', () => {
-    it('should return a Fibonacci sequence sum of "44" when terms is to 10', () => {
-      const term = 10;
-      const fibonacciSequence = new FibonacciSequence(term);
-      const expectedSum = '44';
+    it('should return the total sum of a Fibonacci sequence for all even values up to 4,000,000', () => {
+      const fibonacciSequence = new FibonacciSequence(4000000);
+      const expectedSum = 4613732;
 
-      expect(fibonacciSequence.getSumOfEvenFibonacciSequence().toString()).toEqual(expectedSum);
+      expect(fibonacciSequence.getSumOfEvenFibonacciSequence()).toEqual(expectedSum);
     });
   });
 });
