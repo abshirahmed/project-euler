@@ -1,4 +1,4 @@
-import { getSumOfAllMultiplesOfThreeOrFive } from './getSumOfAllMultiplesOfThreeOrFive';
+import { getSumOfAllMultiplesOfThreeOrFive } from '../../src/problem_01_multiples_of_3_or_5/getSumOfAllMultiplesOfThreeOrFive';
 
 describe('Get sum of all multiples of three or five', () => {
   it.each`
